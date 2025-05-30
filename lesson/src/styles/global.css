@@ -1,0 +1,39 @@
+.App-ytb{
+  display:  grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:25px;
+  padding: 25px;
+}
+.ytb{
+  width: 250px;
+}
+.ytb-image{
+  width: 250px;
+  height: 150px;
+  border-radius: 10px;
+}
+.ytb-footer{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding-top: 10px;
+}
+.ytb-content{
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+
+}
+
+.images{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.ytb-title{
+  margin: 0;
+  font-weight: normal;
+}
+.ytb-auth{
+  font-weight: normal;
+  margin-top: 10px;
+  color: grey;
+}
