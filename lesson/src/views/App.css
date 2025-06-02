@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+/* prop viết tắt property là cách truyền dữ liệu từ component cha xuống component con trong React. */
+
+/* stateless functional component là một hàm không có state, chỉ nhận props và trả về JSX. 
+Chúng thường được sử dụng để hiển thị dữ liệu mà không cần quản lý trạng thái. */
+
+/* stateful funtional component là một hàm có state, 
+có thể quản lý trạng thái và thường sử dụng hooks như useState hoặc useEffect. */
