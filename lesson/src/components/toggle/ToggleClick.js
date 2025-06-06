@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Content from "../contents/Content";
+// import Content from "../contents/Content";
 import Timer from "../contents/Timer";
 const ToggleClick = () => {
   const [show, setShow] = useState();

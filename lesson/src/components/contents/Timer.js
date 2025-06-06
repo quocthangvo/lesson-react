@@ -27,9 +27,17 @@ const Timer = () => {
 
   return (
     <div className="p-10">
-      <h1>{countdown}</h1>
-      <button onClick={handleStart}>Start</button>
-      <button onClick={handleStop}>Stop</button>
+      <p className="text-[50px]">{countdown}</p>
+
+      <button
+        className="mr-4 p-4 bg-green-500 rounded-lg"
+        onClick={handleStart}
+      >
+        Start
+      </button>
+      <button className="p-4 bg-red-500 rounded-lg" onClick={handleStop}>
+        Stop
+      </button>
     </div>
   );
 };
