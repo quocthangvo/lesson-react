@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 //https://picsum.photos/v2/list?page=2&limit=100
 
+//gọi api
 const getPhotos = async (page) => {
   try {
     const response = await axios.get(
