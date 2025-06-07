@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-
-let timerId;
+import React, { useEffect, useRef, useState } from "react";
+//useRef : lưu các giá trị của 1 tham chiếu bên ngoài
 const Timer = () => {
+  let timerId = useRef();
+
   const [countdown, setCountDown] = useState(60);
   const handleStart = () => {
-    timerId = setInterval(() => {
+    timerId.current = setInterval(() => {
       setCountDown((prev) => prev - 1);
       console.log("CountDown");
     }, 1000);
-    console.log("Start -> ", timerId);
+    console.log("Start -> ", timerId.current);
   };
 
   const handleStop = () => {
-    clearInterval(timerId);
-    console.log("Stop ->", timerId);
+    clearInterval(timerId.current);
+    console.log("Stop ->", timerId.current);
   };
 
   //   useEffect(() => {

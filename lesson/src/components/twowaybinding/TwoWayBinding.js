@@ -36,8 +36,9 @@ const TwoWayBinding = () => {
   return (
     <div className="p-10">
       {courses.map((course) => (
-        <div key={course.id} className="text-lg text-red-700">
+        <div key={course.id} className="text-lg text-red-700 flex items-center">
           <input
+            className="h-5 w-5  mr-2"
             type="checkbox"
             checked={checked.includes(course.id)}
             onChange={() => handleCheck(course.id)}
@@ -45,7 +46,10 @@ const TwoWayBinding = () => {
           {course.name}
         </div>
       ))}
-      <button className="bg-black" onClick={handleChange}>
+      <button
+        className="p-4 text-lg bg-slate-500 rounded-lg"
+        onClick={handleChange}
+      >
         Register
       </button>
     </div>
