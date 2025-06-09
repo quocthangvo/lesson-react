@@ -9,7 +9,8 @@
 // import Header from "../components/header/Header";
 // import Click from "../components/contents/Click";
 
-import UseMemo from "../components/todolist/UseMemo";
+import Menu from "../components/menu/Menu";
+// import UseMemo from "../components/todolist/UseMemo";
 // import Paragraph from "../components/theme/Paragraph";
 // import Theme from "../components/theme/Theme";
 import "./App.css";
@@ -19,7 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div>
-      <UseMemo></UseMemo>
+      <Menu></Menu>
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );

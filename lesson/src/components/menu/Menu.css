@@ -1,0 +1,37 @@
+.animation-open
+{
+    position: relative; 
+    animation: animationOpen 0.4s forwards;
+}
+.animation-close{
+    position: relative; 
+    animation: animationClose 0.4s forwards;
+}
+
+@keyframes animationOpen{
+    0% {
+        left: -200px;
+        opacity: 0;
+    }
+    100% {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes animationClose{
+    0% {
+        left: 0;
+        opacity: 1;
+    }
+    100% {
+        left: -200px;
+        opacity: 0;
+    }
+}
+
+td,th{
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: start;
+}
