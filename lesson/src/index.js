@@ -7,6 +7,11 @@ import App from "./views/App";
 import reportWebVitals from "./reportWebVitals";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
+//prime react
+// import { PrimeReactProvider } from "primereact/api";
+// import "primereact/resources/themes/lara-light-blue/theme.css"; // theme
+// import "primereact/resources/primereact.min.css"; // core styles
+// import "primeflex/primeflex.css";
 //redux
 // import { Provider } from "react-redux";
 // import { createStore } from "redux";
@@ -15,13 +20,15 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    {/* <Provider store={reduxStore}> */}
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    {/* </Provider> */}
-  </React.StrictMode>
+  // <React.StrictMode>
+  // <Provider store={reduxStore}>
+
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+
+  // </Provider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

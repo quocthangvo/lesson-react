@@ -49,7 +49,7 @@ const Menu = () => {
         <button
           id="openNav"
           onClick={handleOpen}
-          className={`${opensideBar ? "hidden" : "flex"}`}
+          className={`${opensideBar ? "hidden " : "flex"}`}
         >
           <i className="fa-solid fa-list text-[20px]"></i>
         </button>
@@ -64,8 +64,12 @@ const Menu = () => {
               }`}
             id="mySidebar"
           >
-            <button className="text-start font-bold" onClick={handleClose}>
-              Close &times;
+            <button
+              className="text-end font-bold flex justify-between items-center"
+              onClick={handleClose}
+            >
+              <p>Menu</p>
+              <i className="fa-solid fa-xmark mr-[20px]"></i>
             </button>
             <Link to="#">DashBoard</Link>
             <Link to="#">Link 1</Link>
