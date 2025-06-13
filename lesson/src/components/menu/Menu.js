@@ -6,17 +6,16 @@ import { Link, NavLink, Route, Routes } from "react-router-dom";
 import "./Menu.css";
 
 const Menu = () => {
-  const [opensideBar, setOpenSideBar] = useState(false);
-  const [animate, setAnimate] = useState(false);
+  const [openSideBar, setOpenSideBar] = useState(false);
 
   const handleOpen = useCallback(() => {
     console.log("open");
-    setAnimate(true);
-    setTimeout(() => setOpenSideBar(true), 10);
+
+    setOpenSideBar(true);
   }, []);
   const handleClose = () => {
+    // setTimeout(() => setOpenSideBar(false), 300);
     setOpenSideBar(false);
-    setTimeout(() => setAnimate(false), 300);
   };
 
   return (
@@ -46,39 +45,36 @@ const Menu = () => {
       </ul>
 
       <div className="p-5 flex ">
-        <button
-          id="openNav"
-          onClick={handleOpen}
-          className={`${opensideBar ? "hidden " : "flex"}`}
+        <div
+          id="mySidebar"
+          className={`flex flex-col text-[20px] transition-all duration-300
+            ${openSideBar ? "w-[200px] border-r-2 " : "w-0 overflow-hidden"}`}
         >
-          <i className="fa-solid fa-list text-[20px]"></i>
-        </button>
-
-        {animate && (
-          <div
-            className={`flex-col  gap-2 text-start 
-              text-[20px] h-screen border-r-4  ${
-                opensideBar
-                  ? "flex animation-open w-[15%]"
-                  : "hidden animation-close "
-              }`}
-            id="mySidebar"
+          <button
+            className={`text-end font-bold flex justify-between items-center 
+               `}
+            onClick={handleClose}
           >
-            <button
-              className="text-end font-bold flex justify-between items-center"
-              onClick={handleClose}
-            >
-              <p>Menu</p>
-              <i className="fa-solid fa-xmark mr-[20px]"></i>
-            </button>
-            <Link to="#">DashBoard</Link>
-            <Link to="#">Link 1</Link>
-            <Link to="#">Link 2</Link>
-            <Link to="#">Link 3</Link>
-          </div>
-        )}
+            <p>Menu</p>
+            <i className="fa-solid fa-xmark mr-[20px]"></i>
+          </button>
+          <Link to="#">DashBoard</Link>
+          <Link to="#">Link 1</Link>
+          <Link to="#">Link 2</Link>
+          <Link to="#">Link 3</Link>
+        </div>
 
         <div className="px-5  w-full">
+          <button
+            id="openNav"
+            onClick={handleOpen}
+            className={`transition-opacity duration-300 ${
+              openSideBar ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <i className="fa-solid fa-list text-[24px]"></i>
+          </button>
+
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/news" element={<NewPage />} />

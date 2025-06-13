@@ -25,13 +25,27 @@ const userInfo = {
     bs: "",
   },
 };
-
+const DivInfoStyle = styled.div`
+  border-width: 2px;
+  padding: 12px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+`;
+const DivStyle = styled.div`
+  color: gray;
+`;
+const SpanStyle = styled.span`
+  color: #000;
+  font-weight: bold;
+`;
 const ViewUser = (props) => {
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState(userInfo);
   const getUserById = async () => {
     try {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users/" + props.userId
+        "https://684bd4a0ed2578be881c9fef.mockapi.io/List/" + props.userId
       );
       setUserData(response.data);
       return;
@@ -44,25 +58,9 @@ const ViewUser = (props) => {
     getUserById();
   }, []);
 
-  const DivInfoStyle = styled.div`
-    border-width: 2px;
-    padding: 12px;
-    border-radius: 8px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  `;
-  const DivStyle = styled.div`
-    color: gray;
-  `;
-  const SpanStyle = styled.span`
-    color: #000;
-    font-weight: bold;
-  `;
-
   return (
     <div className="">
-      <h2 className="text-xl font-semibold mb-2">User Detail</h2>
+      <h2 className=" mb-2">User Detail</h2>
       <div className="my-3">
         <h3>Basic Info</h3>
         <DivInfoStyle>
@@ -71,7 +69,7 @@ const ViewUser = (props) => {
             <SpanStyle> {userData.name}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            User Name: <SpanStyle> {userData.username}</SpanStyle>
+            Age: <SpanStyle> {userData.age}</SpanStyle>
           </DivStyle>
           <DivStyle>
             Email: <SpanStyle> {userData.email}</SpanStyle>
@@ -89,22 +87,22 @@ const ViewUser = (props) => {
         <DivInfoStyle>
           <DivStyle>
             Street:
-            <SpanStyle> {userData.address?.street}</SpanStyle>
+            <SpanStyle> {userData.street}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            Suite: <SpanStyle> {userData.address?.suite}</SpanStyle>
+            Suite: <SpanStyle> {userData.suite}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            City: <SpanStyle> {userData.address?.city}</SpanStyle>
+            City: <SpanStyle> {userData.city}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            Zipcode: <SpanStyle> {userData.address?.zipcode}</SpanStyle>
+            Zipcode: <SpanStyle> {userData.zipcode}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            Geo Lat: <SpanStyle> {userData.address?.geo.lat}</SpanStyle>
+            Geo Lat: <SpanStyle> {userData.lat}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            Lng: <SpanStyle> {userData.address?.geo.lng}</SpanStyle>
+            Lng: <SpanStyle> {userData.lng}</SpanStyle>
           </DivStyle>
         </DivInfoStyle>
       </div>
@@ -113,14 +111,14 @@ const ViewUser = (props) => {
         <DivInfoStyle>
           <DivStyle>
             Name:
-            <SpanStyle> {userData.company?.name}</SpanStyle>
+            <SpanStyle> {userData.name}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            Catch Phrase:{" "}
-            <SpanStyle> {userData.company?.catchPhrase}</SpanStyle>
+            Catch Phrase:
+            <SpanStyle> {userData.catchPhrase}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            BS: <SpanStyle> {userData.company?.bs}</SpanStyle>
+            BS: <SpanStyle> {userData.bs}</SpanStyle>
           </DivStyle>
         </DivInfoStyle>
       </div>
