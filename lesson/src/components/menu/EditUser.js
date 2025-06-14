@@ -48,28 +48,45 @@ const InputStyle = styled.input`
   color: black;
 `;
 
-const AddUser = (props) => {
+const EditUser = (props) => {
   const [userData, setUserData] = useState(userInfo);
 
-  const addUser = async () => {
+  useEffect(() => {
+    // setUserData({ ...userData, id: props.userId });
+    getUser();
+  }, []);
+
+  const getUser = async () => {
     try {
-      const response = await axios.post(
-        "https://684bd4a0ed2578be881c9fef.mockapi.io/List",
+      const response = await axios.get(
+        "https://684bd4a0ed2578be881c9fef.mockapi.io/List/" + props.userId
+      );
+      if (response) {
+        console.log(response);
+        setUserData(response.data);
+      }
+    } catch (e) {
+      toast.error("Sửa thất bại");
+    }
+  };
+
+  const editUser = async () => {
+    try {
+      const response = await axios.put(
+        "https://684bd4a0ed2578be881c9fef.mockapi.io/List/" + props.userId,
         userData
       );
       if (response) {
         if (response.status === 201 || response.status === 200) {
-          props.setUserAdded(); // gọi để reload danh sách
+          props.setUserEdited(); // gọi để reload danh sách
           props.onClose(); // đóng modal
+          toast.success("Sửa thành công");
         }
-        toast.success("Thêm thành công");
       }
     } catch (e) {
-      console.log(e);
+      toast.error("Sửa thất bại");
     }
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div className="">
@@ -246,7 +263,7 @@ const AddUser = (props) => {
       <div className="text-end mt-4">
         <button
           className="px-4 py-2 ml-2 bg-green-500 text-white rounded-lg"
-          onClick={() => addUser()}
+          onClick={() => editUser()}
         >
           Save
         </button>
@@ -261,4 +278,4 @@ const AddUser = (props) => {
   );
 };
 
-export default AddUser;
+export default EditUser;

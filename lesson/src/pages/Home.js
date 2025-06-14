@@ -3,6 +3,7 @@ import ViewUser from "../components/menu/ViewUser";
 import AddUser from "../components/menu/AddUser";
 import axios from "axios";
 import { toast } from "react-toastify";
+import EditUser from "../components/menu/EditUser";
 // import { toast } from "react-toastify";
 
 const Home = () => {
@@ -10,13 +11,10 @@ const Home = () => {
   const [visible, setVisible] = useState(false); // mở modal theo dòng
   const [showAddModal, setShowAddModal] = useState(false); // mở modal theo dòng
   const [selectedUser, setSelectedUser] = useState(null); //chon user de lay id
-  const [deleteIndex, setDeleteIndex] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   useEffect(() => {
-    // fetch(`https://jsonplaceholder.typicode.com/users`)
-    //   .then((response) => response.json())
-    //   .then((posts) => setPosts(posts));
     getAllUsers();
   }, []);
 
@@ -42,7 +40,7 @@ const Home = () => {
         getAllUsers();
         toast.success("Đã xóa thành công");
       }
-      setDeleteIndex(null);
+      setSelectedUser(null);
       setShowDeleteModal(false);
     } catch (error) {
       toast.error("Đã xóa thành công");
@@ -52,10 +50,10 @@ const Home = () => {
     return (
       <>
         <button
-          className="text-[20px] px-2 m-1 text-white rounded-lg bg-red-500"
+          className="text-[20px] px-2 m-1 text-red-500"
           onClick={(e) => {
             e.stopPropagation();
-            setDeleteIndex(rowData.id);
+            setSelectedUser(rowData.id);
             setShowDeleteModal(true);
             console.log(rowData.id);
           }}
@@ -63,9 +61,12 @@ const Home = () => {
           <i className="fa-regular fa-trash-can"></i>
         </button>
         <button
-          className="text-[20px] px-2 m-1 text-white rounded-lg bg-yellow-500"
+          className="text-[20px] px-2 m-1 text-yellow-500 "
           onClick={(e) => {
             e.stopPropagation();
+            setSelectedUser(rowData.id);
+            setShowEditModal(true);
+
             console.log(rowData.id);
           }}
         >
@@ -117,10 +118,10 @@ const Home = () => {
                 <td>{item.name}</td>
                 <td>{item.age}</td>
                 <td>{item.email}</td>
-                <td>{item.street}</td>
+                <td>{item.address.street}</td>
                 <td>{item.phone}</td>
                 <td>{item.website}</td>
-                <td>{item.name}</td>
+                <td>{item.company.nameCompany}</td>
                 <td>{actionTemplate(item)}</td>
               </tr>
             ))}
@@ -141,7 +142,7 @@ const Home = () => {
           </div>
         </div>
       )}
-
+      {/* modal thêm */}
       {showAddModal && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
           <div className="bg-white p-5 rounded-lg w-[55vw] transition-all duration-300 ease-out transform scale-100 opacity-100">
@@ -154,7 +155,6 @@ const Home = () => {
               <AddUser
                 onClose={() => setShowAddModal(false)}
                 setUserAdded={() => {
-                  // setShowAddModal(false);
                   getAllUsers();
                 }}
               />
@@ -162,8 +162,29 @@ const Home = () => {
           </div>
         </div>
       )}
-
-      {/* modal */}
+      {/* modal sửa */}
+      {showEditModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+          <div className="bg-white p-5 rounded-lg w-[55vw] transition-all duration-300 ease-out transform scale-100 opacity-100">
+            <div className="flex justify-end">
+              <button onClick={() => setShowEditModal(false)}>
+                <i className="fa-solid fa-xmark text-xl"></i>
+              </button>
+            </div>
+            <div className="mt-2">
+              <EditUser
+                userId={selectedUser}
+                onClose={() => setShowEditModal(false)}
+                setUserEdited={() => {
+                  getAllUsers();
+                }}
+                // props userid, đóng, và reload list
+              />
+            </div>
+          </div>
+        </div>
+      )}
+      {/* modal xóa*/}
       {showDeleteModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 ">
           <div
@@ -171,7 +192,7 @@ const Home = () => {
           animate-fadeIn"
           >
             <div className="flex">
-              <i className="fa-solid fa-triangle-exclamation text-[50px] text-red-400"></i>
+              <i className="fa-solid fa-triangle-exclamation text-[50px] text-red-500"></i>
               <div className="ml-4">
                 <p className="text-lg font-semibold text-red-500">
                   Xóa dữ liệu
@@ -188,8 +209,8 @@ const Home = () => {
                 Huỷ
               </button>
               <button
-                className="px-6 py-1 bg-red-400 text-white rounded hover:bg-red-600"
-                onClick={() => handleDelete(deleteIndex)}
+                className="px-6 py-1 bg-red-500 text-white rounded hover:bg-red-700"
+                onClick={() => handleDelete(selectedUser)}
               >
                 Xoá
               </button>

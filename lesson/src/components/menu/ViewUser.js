@@ -87,22 +87,22 @@ const ViewUser = (props) => {
         <DivInfoStyle>
           <DivStyle>
             Street:
-            <SpanStyle> {userData.street}</SpanStyle>
+            <SpanStyle> {userData.address.street}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            Suite: <SpanStyle> {userData.suite}</SpanStyle>
+            Suite: <SpanStyle> {userData.address.suite}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            City: <SpanStyle> {userData.city}</SpanStyle>
+            City: <SpanStyle> {userData.address.city}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            Zipcode: <SpanStyle> {userData.zipcode}</SpanStyle>
+            Zipcode: <SpanStyle> {userData.address.zipcode}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            Geo Lat: <SpanStyle> {userData.lat}</SpanStyle>
+            Geo Lat: <SpanStyle> {userData.address.geo.lat}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            Lng: <SpanStyle> {userData.lng}</SpanStyle>
+            Lng: <SpanStyle> {userData.address.geo.lng}</SpanStyle>
           </DivStyle>
         </DivInfoStyle>
       </div>
@@ -111,14 +111,14 @@ const ViewUser = (props) => {
         <DivInfoStyle>
           <DivStyle>
             Name:
-            <SpanStyle> {userData.name}</SpanStyle>
+            <SpanStyle> {userData.company.nameCompany}</SpanStyle>
           </DivStyle>
           <DivStyle>
             Catch Phrase:
-            <SpanStyle> {userData.catchPhrase}</SpanStyle>
+            <SpanStyle> {userData.company.catchPhrase}</SpanStyle>
           </DivStyle>
           <DivStyle>
-            BS: <SpanStyle> {userData.bs}</SpanStyle>
+            BS: <SpanStyle> {userData.company.bs}</SpanStyle>
           </DivStyle>
         </DivInfoStyle>
       </div>
